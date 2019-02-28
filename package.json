@@ -1,0 +1,29 @@
+{
+  "name": "helpers",
+  "version": "1.0.0",
+  "description": "simply js helpers",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sfra/helpers.js.git"
+  },
+  "keywords": [
+    "js",
+    "helpers"
+  ],
+  "author": "Szymon Frankowski <sz.frankyy@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sfra/helpers.js/issues"
+  },
+  "homepage": "https://github.com/sfra/helpers.js#readme",
+  "devDependencies": {
+    "jest": "^24.1.0"
+  }
+}

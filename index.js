@@ -18,7 +18,7 @@ function deepEqual(a, b) {
           })))
     );
   }
-
+/* the Set is an object also, so let us finish it before the next, object condition is checked*/
   if (a instanceof Set) {
     return (
       b instanceof Set &&
@@ -52,4 +52,90 @@ function deepEqual(a, b) {
   return a === b;
 }
 
+function deepCopy(src) {
+
+  let copy=null;
+
+  if(Array.isArray(src)) {
+    copy=[];
+
+    for(let i=0, max=src.length;i<max;i++) {
+      copy.push(deepCopy(src[i]));
+    }
+    return copy;
+  }
+
+  if(src instanceof Set) {
+    copy = new Set();
+    for(let item of src) {
+      copy.add(item);
+    }
+    return copy;
+  }
+
+  if(typeof src==='object') {
+    copy = {};
+    for(let item in src) {
+      copy[item] = deepCopy(src[item]);
+    }
+    return copy;
+  }
+
+
+  return src;
+}
+
+function deepMerge(a,b,config={}){
+  let merged = null;
+//  config = config || {};
+  console.log(config);
+  config['string'] = config['string'] || ((a,b)=>a);
+  config['number'] = config['number'] || ((a,b)=>a);
+  config['boolean'] = config['boolean'] || ((a,b)=> a);
+  if(typeof a==='undefined' || typeof b==='undefined') {
+    return deepCopy(a) || deepCopy(b);
+  }
+  if(Array.isArray(a) && Array.isArray(b)){
+        merged = [];
+        for(let i=0,max=Math.max(a.length,b.length); i<max;i++){
+            merged.push(deepMerge(a[i],b[i],config));
+        }
+  }
+
+  if(typeof a ==='object' && typeof b ==='object' && b) {
+      merged = deepCopy(b) || {};
+      for(let prop in a) {
+         merged[prop] = deepMerge(a[prop],b[prop],config);
+      }
+      return merged;
+  }
+  console.log(a);
+console.log((`${typeof a}.${typeof b}` in config ) || typeof a || typeof b);
+console.log(b);
+  return config[ (`${typeof a}.${typeof b}` in config ) || typeof a || typeof b ](a,b);
+}
+
+let x = {
+    foo: { bar: 3 },
+    array: [{
+        does: 'work',
+        too: [ 1, 2, 3 ]
+    }]
+}
+
+let y = {
+    foo: { baz: 4 },
+    quux: 5,
+    array: [{
+        does: 'work',
+        too: [ 4, 5, 6 ]
+    }, {
+        really: 'yes'
+    }]
+}
+
+console.log(deepMerge(x,y,{'string': (a,b)=> a}));
+
 exports.deepEqual = deepEqual;
+exports.deepCopy = deepCopy;
+exports.deepMerge = deepMerge;
