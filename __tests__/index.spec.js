@@ -53,21 +53,23 @@ describe('deepCopy',()=>{
 
 
 describe('deepMerge',()=>{
+
+  let config={
+    'string': (a,b)=>a+b,
+    'number': (a,b)=> Math.min(a,b),
+    'boolean': (a,b) => a || b,
+    'function': (a,b)=> {
+      return (...arg) => {
+        a(...arg)+b(...arg);
+      };
+    },
+    'string.number': (a,b) => parseInt(a)*parseInt(b)
+  };
+
     test('Simple expample',()=>{
       let p0 = [3,4,5];
       let p1 = [6,7,9];
-      let config={
-        'string': (a,b)=>a+b
-        ,
-        'number': (a,b)=> Math.min(a,b),
-        'boolean': (a,b) => a || b,
-        'function': (a,b)=> {
-          return (...arg) => {
-            a(...arg)+b(...arg);
-          };
-        },
-        'string.number': (a,b) => parseInt(a)*parseInt(b)
-      };
+
 
 
       p0 = {

@@ -1,6 +1,6 @@
 {
-  "name": "helpers",
-  "version": "1.0.0",
+  "name": "@sz.frankyy/helpers",
+  "version": "1.0.1",
   "description": "simply js helpers",
   "main": "index.js",
   "directories": {
@@ -15,7 +15,11 @@
   },
   "keywords": [
     "js",
-    "helpers"
+    "helpers",
+    "deepEqual",
+    "deepCopy",
+    "deepMerge"	
+	
   ],
   "author": "Szymon Frankowski <sz.frankyy@gmail.com>",
   "license": "MIT",

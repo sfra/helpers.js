@@ -85,8 +85,9 @@ function deepCopy(src) {
   return src;
 }
 
-function deepMerge(a,b,config={}){  let merged = null;
-
+function deepMerge(a,b,config={}){
+  let merged = null;
+console.dir(config.toString());
   config['string'] = config['string'] || ((a,b)=>a);
   config['number'] = config['number'] || ((a,b)=>a);
   config['boolean'] = config['boolean'] || ((a,b)=> a);
@@ -109,6 +110,9 @@ function deepMerge(a,b,config={}){  let merged = null;
       return merged;
   }
 
+
+
+
   return config[ (`${typeof a}.${typeof b}` in config ) || typeof a || typeof b ](a,b);
 }
 
@@ -117,3 +121,5 @@ function deepMerge(a,b,config={}){  let merged = null;
 exports.deepEqual = deepEqual;
 exports.deepCopy = deepCopy;
 exports.deepMerge = deepMerge;
+
+
