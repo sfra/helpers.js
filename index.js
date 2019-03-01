@@ -1,7 +1,7 @@
 function deepEqual(a, b) {
   let eq = true;
   if (Array.isArray(a)) {
-    if (a.length === 0) {
+    if (a.length ===  0) {
       if (b.length === 0) {
         return true;
       }
@@ -85,13 +85,12 @@ function deepCopy(src) {
   return src;
 }
 
-function deepMerge(a,b,config={}){
-  let merged = null;
-//  config = config || {};
-  console.log(config);
+function deepMerge(a,b,config={}){  let merged = null;
+
   config['string'] = config['string'] || ((a,b)=>a);
   config['number'] = config['number'] || ((a,b)=>a);
   config['boolean'] = config['boolean'] || ((a,b)=> a);
+
   if(typeof a==='undefined' || typeof b==='undefined') {
     return deepCopy(a) || deepCopy(b);
   }
@@ -109,32 +108,11 @@ function deepMerge(a,b,config={}){
       }
       return merged;
   }
-  console.log(a);
-console.log((`${typeof a}.${typeof b}` in config ) || typeof a || typeof b);
-console.log(b);
+
   return config[ (`${typeof a}.${typeof b}` in config ) || typeof a || typeof b ](a,b);
 }
 
-let x = {
-    foo: { bar: 3 },
-    array: [{
-        does: 'work',
-        too: [ 1, 2, 3 ]
-    }]
-}
 
-let y = {
-    foo: { baz: 4 },
-    quux: 5,
-    array: [{
-        does: 'work',
-        too: [ 4, 5, 6 ]
-    }, {
-        really: 'yes'
-    }]
-}
-
-console.log(deepMerge(x,y,{'string': (a,b)=> a}));
 
 exports.deepEqual = deepEqual;
 exports.deepCopy = deepCopy;

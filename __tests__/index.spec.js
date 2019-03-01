@@ -53,7 +53,7 @@ describe('deepCopy',()=>{
 
 
 describe('deepMerge',()=>{
-    test('xxx',()=>{
+    test('Simple expample',()=>{
       let p0 = [3,4,5];
       let p1 = [6,7,9];
       let config={
@@ -91,29 +91,6 @@ describe('deepMerge',()=>{
 
 
 
-      let x = {
-          foo: { bar: 3 },
-          array: [{
-              does: 'work',
-              too: [ 1, 2, 3 ]
-          }]
-      }
-
-      let y = {
-          foo: { baz: 4 },
-          quux: 5,
-          array: [{
-              does: 'work',
-              too: [ 4, 5, 6 ]
-          }, {
-              really: 'yes'
-          }]
-      }
-
-
-
-
-
 
       expect(deepEqual(deepMerge(p0,p1,config),
         {
@@ -130,22 +107,7 @@ describe('deepMerge',()=>{
     ).toBeTruthy();
 
 
-    // expect(deepEqual(deepMerge(x,y,{}), {
-    //     foo: {
-    //         bar: 3,
-    //         baz: 4
-    //     },
-    //     array: [{
-    //         does: 'work',
-    //         too: [ 1, 2, 3 ]
-    //     }, {
-    //         does: 'work',
-    //         too: [ 4, 5, 6 ]
-    //     }, {
-    //         really: 'yes'
-    //     }],
-    //     quux: 5
-    // })).toBeTruthy();
+
 
 
     });
