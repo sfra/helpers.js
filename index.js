@@ -87,7 +87,7 @@ function deepCopy(src) {
 
 function deepMerge(a,b,config={}){
   let merged = null;
-console.dir(config.toString());
+
   config['string'] = config['string'] || ((a,b)=>a);
   config['number'] = config['number'] || ((a,b)=>a);
   config['boolean'] = config['boolean'] || ((a,b)=> a);
