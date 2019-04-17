@@ -1,7 +1,7 @@
 const deepEqual = require('../index').deepEqual;
 const deepCopy = require('../index').deepCopy;
 const deepMerge = require('../index').deepMerge;
-
+const Sstring = require('../index').Sstring;
 let objs0 =[
   {x:44,y:22},
   {x:44,y:-22},
@@ -114,3 +114,17 @@ describe('deepMerge',()=>{
 
     });
 })
+
+
+let s = 'http://somehost/profile'
+describe('Sstring',()=>{
+    test('suffix',()=>{
+      expect(Sstring.suffix(s,7)).toBe('http://somehost/');
+
+      expect(Sstring.suffix(s,'file')).toBe('http://somehost/pro');
+
+
+    })
+
+
+});

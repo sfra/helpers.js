@@ -118,8 +118,24 @@ function deepMerge(a,b,config={}){
 
 
 
+const Sstring = {
+  suffix:(st,su)=>{
+    let ss=null;
+    if(typeof su==='number') {
+      return st.substring(0,st.length-su);
+    }
+    if(typeof su=='string') {
+      ss = st.split(su);
+      ss.pop();
+      return ss.join(su);
+    }
+
+
+  }
+}
+
+
 exports.deepEqual = deepEqual;
 exports.deepCopy = deepCopy;
 exports.deepMerge = deepMerge;
-
-
+exports.Sstring = Sstring;
