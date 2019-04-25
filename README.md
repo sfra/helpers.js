@@ -322,3 +322,16 @@ Moreover, if the function
 ````
 then the depencies would be automatically set to the min version. For example, if "reset-css": "^3.0.2", and "reset-css": "^3.2.1" occur in two
 package.json file, then "reset-css": "^3.0.2" would be choosen.
+
+## [Promise] sleep([number])
+Sleep by some time (the only one argument in miliseconds). Can be used in async funtions:
+````javascript
+async ()=>{
+    console.log('One');
+    await sleep(1000);
+    console.log('Two');
+    await sleep(1000);
+    console.log('Three');
+}
+
+````

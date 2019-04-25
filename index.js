@@ -135,7 +135,14 @@ const Sstring = {
 }
 
 
+ const sleep = (milliseconds) => {
+     return new Promise(resolve => setTimeout(resolve, milliseconds))
+ }
+      
+
+
 exports.deepEqual = deepEqual;
 exports.deepCopy = deepCopy;
 exports.deepMerge = deepMerge;
 exports.Sstring = Sstring;
+exports.sleep = sleep;

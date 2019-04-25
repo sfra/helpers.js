@@ -18,8 +18,7 @@
     "helpers",
     "deepEqual",
     "deepCopy",
-    "deepMerge"	
-	
+    "deepMerge"
   ],
   "author": "Szymon Frankowski <sz.frankyy@gmail.com>",
   "license": "MIT",
@@ -29,5 +28,8 @@
   "homepage": "https://github.com/sfra/helpers.js#readme",
   "devDependencies": {
     "jest": "^24.1.0"
+  },
+  "dependencies": {
+    "@babel/preset-env": "^7.4.3"
   }
 }
