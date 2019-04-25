@@ -324,7 +324,7 @@ then the depencies would be automatically set to the min version. For example, i
 package.json file, then "reset-css": "^3.0.2" would be choosen.
 
 ## [Promise] sleep([number])
-Sleep by some time (the only one argument in miliseconds). Can be used in async funtions:
+Sleep for some time (the only one argument express it in miliseconds). Can be used in async funtions:
 ````javascript
 async ()=>{
     console.log('One');
