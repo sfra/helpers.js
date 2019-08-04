@@ -2,27 +2,21 @@ function deepEqual(a, b) {
   let eq = true;
   if (Array.isArray(a)) {
     if (a.length ===  0) {
-      if (b.length === 0) {
-        return true;
-      }
-      return false;
+      return (b.length === 0) 
+       
     }
 
-    return (
-      true ===
-      (typeof a === typeof b &&
-        a.length === b.length &&
+    return typeof a === typeof b && a.length === b.length &&
         ((a.length === 1 && a[0] === b[0]) ||
           a.reduce((p, n, i) => {
             return eq && deepEqual(n, b[i]) && deepEqual(a[0], b[0]);
-          })))
+          })
     );
   }
 /* the Set is an object also, so let us finish it before the next, object condition is checked*/
   if (a instanceof Set) {
     return (
-      b instanceof Set &&
-      a.size === b.size &&
+      parseInt(a.size) === parseInt(b.size) &&
       (() => {
         let eq2 = false;
 
