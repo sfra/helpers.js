@@ -132,7 +132,23 @@ const Sstring = {
  const sleep = (milliseconds) => {
      return new Promise(resolve => setTimeout(resolve, milliseconds))
  }
+
       
+const whichOne = (obj,array,ref=false)=>{
+    let equality = deepEqual;
+    ref || (equality=(x,y)=> x===y);
+    
+  for(let i=0, max = array.length;i<max;i++){
+    debugger;
+    if(equality(array[i],obj)) {
+      return i;
+    }
+
+
+  }
+  return -1;
+
+};
 
 
 exports.deepEqual = deepEqual;
@@ -140,3 +156,4 @@ exports.deepCopy = deepCopy;
 exports.deepMerge = deepMerge;
 exports.Sstring = Sstring;
 exports.sleep = sleep;
+exports.whichOne=whichOne;

@@ -335,3 +335,11 @@ async ()=>{
 }
 
 ````
+
+## [number] whichOne([object],[array],[boolean]=false)
+
+Returns an index of the array on which an object occurs. If the object is not present it returns -1.
+If the boolean argument if true an equality is understood as equality by reference (identity of objects). 
+
+
+    

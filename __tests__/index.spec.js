@@ -2,6 +2,8 @@ const deepEqual = require('../index').deepEqual;
 const deepCopy = require('../index').deepCopy;
 const deepMerge = require('../index').deepMerge;
 const Sstring = require('../index').Sstring;
+const whichOne = require('../index').whichOne;
+
 let objs0 =[
   {x:44,y:22},
   {x:44,y:-22},
@@ -124,7 +126,26 @@ describe('Sstring',()=>{
       expect(Sstring.suffix(s,'file')).toBe('http://somehost/pro');
 
 
-    })
+    });
 
 
 });
+
+let objInArray = {x:11,y:12};
+
+let array = [{x:11,y:12},{x:11},'Hello world',objInArray, {z:22,u:33}];
+describe('whichOne',()=>{
+  test('exists',()=>{
+    expect(whichOne(objInArray,array)).toBe(3);
+    
+  })
+  test('non-exists',()=>{
+    expect(whichOne({x:11},array)).toBe(-1);
+    
+  })
+
+  test('by value',()=>{
+
+    expect(whichOne(objInArray,array,true)).toBe(0);
+  });
+})
