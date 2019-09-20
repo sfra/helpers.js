@@ -342,4 +342,9 @@ Returns an index of the array on which an object occurs. If the object is not pr
 If the boolean argument if true an equality is understood as equality by reference (identity of objects). 
 
 
-    
+
+## [string] toFixedString=([string or number], [string], [string]='',[string]='',[string]=' ');
+
+
+Completes a given string by the character given the the last argument and ads an prefix and suffix.
+It can be used in console application to improve data presentation. 

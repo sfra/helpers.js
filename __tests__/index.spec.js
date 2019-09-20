@@ -1,8 +1,7 @@
-const deepEqual = require('../index').deepEqual;
-const deepCopy = require('../index').deepCopy;
-const deepMerge = require('../index').deepMerge;
-const Sstring = require('../index').Sstring;
-const whichOne = require('../index').whichOne;
+const { deepEqual, deepCopy, deepMerge, Sstring, whichOne, toFixedString } = require('../index');
+
+
+
 
 let objs0 =[
   {x:44,y:22},
@@ -148,4 +147,25 @@ describe('whichOne',()=>{
 
     expect(whichOne(objInArray,array,true)).toBe(0);
   });
-})
+});
+
+
+
+
+
+describe('toFixedString',()=>{
+  test('by number',()=>{
+      expect(toFixedString(10,'start','|','|')).toBe('|start     |');
+      expect(toFixedString(9,'start','','|')).toBe('start    |');
+      expect(toFixedString(10,'start','|','|','+')).toBe('|start+++++|');
+
+  });
+
+  test('by string',()=>{
+    expect(toFixedString('xxxxxx','start','|','|')).toBe('|start |');
+    expect(toFixedString('xxxxxxx','start','','|')).toBe('start  |');
+    expect(toFixedString('xxxxx','start','|','|','+')).toBe('|start|');
+
+});
+
+});

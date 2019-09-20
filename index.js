@@ -151,9 +151,24 @@ const whichOne = (obj,array,ref=false)=>{
 };
 
 
+
+const toFixedString=(linePatern, line, prefix='', postfix='', fill=' ' )=> {
+  let linePatternLength = (typeof linePatern==='string')?linePatern.length: linePatern;
+
+  let lineLength = Math.max(line.length, linePatternLength);
+  let out = line;
+  for(let i=0;  i<lineLength-line.length; i++) {
+    out+=fill;
+  }
+
+ return prefix+out+postfix;
+}
+
+
 exports.deepEqual = deepEqual;
 exports.deepCopy = deepCopy;
 exports.deepMerge = deepMerge;
 exports.Sstring = Sstring;
 exports.sleep = sleep;
 exports.whichOne=whichOne;
+exports.toFixedString = toFixedString;
