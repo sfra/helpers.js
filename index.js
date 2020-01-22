@@ -165,6 +165,13 @@ const toFixedString=(linePatern, line, prefix='', postfix='', fill=' ' )=> {
 }
 
 
+
+
+const findPathInObject=(ob, key, path = '') => {
+  return [];
+}
+
+
 exports.deepEqual = deepEqual;
 exports.deepCopy = deepCopy;
 exports.deepMerge = deepMerge;
@@ -172,3 +179,4 @@ exports.Sstring = Sstring;
 exports.sleep = sleep;
 exports.whichOne=whichOne;
 exports.toFixedString = toFixedString;
+exports.findPathInObject = findPathInObject;
