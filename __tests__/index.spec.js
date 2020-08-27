@@ -174,14 +174,18 @@ describe('toFixedString', () => {
 
 describe('findPathInObject', () => {
   test('find z', () => {
-    let examinedObject = { x: { y: [2, 3, 4, { z: 'dadsw' }] }, uu: { c: 'ABC', z: { k: [], l: 1 } } };
+    let examinedObject = { x: { y:  { z: 'dadsw' } } , uu: { c: { z: { k: [], l: 1 } }} };
+    let examinedObject0 = {x: {y: {z:11}}}
     let examinedObject1 ={z:[11]};
     let examinedObject2 ={ x: { y: [2, 3, 4, { zz: 'dadsw' }] }, uu: { c: 'ABC', zz: { k: [], l: 1 } } };;
+    let examinedObject3 = {x: [1,2,{u: {z: 'dd'}}]}
     
-    expect(findPathInObject(examinedObject, 'z')).toEqual([`x.y.3.z`], ['uu.c.z']);
-    expect(findPathInObject(examinedObject1, 'z')).toEqual(['z']);
-    expect(findPathInObject(examinedObject2, 'z')).toEqual([]);
+    expect(findPathInObject(examinedObject0, 'z')).toEqual(['x.y']);
 
+    expect(findPathInObject(examinedObject, 'z')).toEqual([`x.y`,'uu.c']);
+     expect(findPathInObject(examinedObject1, 'z')).toEqual(['']);
+    expect(findPathInObject(examinedObject2, 'z')).toEqual([]);
+    expect(findPathInObject(examinedObject3, 'z')).toEqual(['x.2.u']);
 
   });
 

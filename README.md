@@ -348,3 +348,13 @@ If the boolean argument if true an equality is understood as equality by referen
 
 Completes a given string by the character given the the last argument and ads an prefix and suffix.
 It can be used in console application to improve data presentation. 
+
+
+## [Array] findPathInObject = (ob [object], key [string], paths=[] [Array], path = '' [Array])
+
+Computes the path to the key in the object ob. For example the path of 'z' in {x: {u: 11, b: {z: 11}}} is 'x.b'. Therefore findPathInObject({x: {u: 11}, b: {z: 11}}, 'z') will equal
+
+['x.b']. The paths of 'z' in {x: {u: 11, b: {z: 11}}, c: [23,5,6,7, {z: []}]} is ['x.b', 'c.4'].
+
+
+

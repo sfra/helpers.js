@@ -165,11 +165,34 @@ const toFixedString=(linePatern, line, prefix='', postfix='', fill=' ' )=> {
 }
 
 
-
-
-const findPathInObject=(ob, key, path = '') => {
+const makeFlatArray=(array) =>{
   return [];
 }
+
+const findPathInObject = (ob, key, paths=[], path = '') => {
+  let keys =Object.keys(ob);
+  
+  for(let i=0, max = keys.length; i<max; i++) {
+    if(keys[i]===key) {
+      paths.push(path)
+      return paths
+    }
+    if(typeof ob[keys[i]]==='object') {
+      findPathInObject(ob[keys[i]],key,paths, path===''?keys[i]:path+'.'+keys[i])
+
+    }
+   }
+
+  
+  
+
+  return paths.flat(10000);
+}
+
+
+
+
+
 
 
 exports.deepEqual = deepEqual;
@@ -179,4 +202,5 @@ exports.Sstring = Sstring;
 exports.sleep = sleep;
 exports.whichOne=whichOne;
 exports.toFixedString = toFixedString;
+exports.makeFlatArray = makeFlatArray;
 exports.findPathInObject = findPathInObject;
